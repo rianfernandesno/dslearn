@@ -3,6 +3,8 @@ package com.yui.dslearn.entities;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,6 +21,9 @@ public class Offer {
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
+
+    @OneToMany(mappedBy = "offer")
+    private List<Resource> resources = new ArrayList<>();
 
     public Offer(){}
 
@@ -44,6 +49,10 @@ public class Offer {
 
     public Course getCourse() {
         return course;
+    }
+
+    public List<Resource> getResources() {
+        return resources;
     }
 
     public void setEdition(String edition) {
