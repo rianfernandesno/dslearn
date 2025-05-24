@@ -1,12 +1,12 @@
 package com.yui.dslearn.entities.pk;
 
+import com.yui.dslearn.entities.Deliver;
+import com.yui.dslearn.entities.Lesson;
 import com.yui.dslearn.entities.Offer;
 import com.yui.dslearn.entities.User;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
-import java.util.Objects;
+import java.util.*;
 
 @Embeddable
 public class EnrollmentPk {
@@ -17,6 +17,12 @@ public class EnrollmentPk {
     @ManyToOne
     @JoinColumn(name = "offer_id")
     private Offer offer;
+
+    @ManyToMany(mappedBy = "enrollmentsDone")
+    private Set<Lesson> lessonsDone = new HashSet<>();
+
+    @OneToMany(mappedBy = "enrollment")
+    private List<Deliver> deliveries = new ArrayList<>();
 
     public  EnrollmentPk(){}
 
@@ -39,6 +45,14 @@ public class EnrollmentPk {
 
     public void setOffer(Offer offer) {
         this.offer = offer;
+    }
+
+    public List<Deliver> getDeliveries() {
+        return deliveries;
+    }
+
+    public Set<Lesson> getLessonsDone() {
+        return lessonsDone;
     }
 
     @Override

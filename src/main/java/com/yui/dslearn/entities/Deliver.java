@@ -1,7 +1,5 @@
-package com.yui.dslearn.entities.pk;
+package com.yui.dslearn.entities;
 
-import com.yui.dslearn.entities.Enrollment;
-import com.yui.dslearn.entities.Lesson;
 import com.yui.dslearn.entities.enums.DeliverStatus;
 import jakarta.persistence.*;
 

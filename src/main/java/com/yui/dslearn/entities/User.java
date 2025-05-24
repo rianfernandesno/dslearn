@@ -73,9 +73,6 @@ public class User {
         this.password = password;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
 
     public void setNotifications(List<Notification> notifications) {
         this.notifications = notifications;
